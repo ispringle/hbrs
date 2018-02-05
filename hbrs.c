@@ -74,6 +74,16 @@ typedef struct reading{
 	int chapter;
 } reading;
 
+typedef struct plan {
+	int day;
+	int date;
+} plan;
+
+void get_readings(int day);
+
+plan read();
+int write(plan plan);
+
 reading list0 (int day);
 reading list1 (int day);
 reading list2 (int day);
@@ -87,7 +97,26 @@ reading list9 (int day);
 
 int main (int argv, char *argc[]) {
 
-	int day = 54;
+	plan plan = read();
+	int day = plan.day;
+	int date = plan.date;
+	
+	printf("Readings for day %d\n", day);
+	get_readings(day);
+
+	plan.day = ++day;
+	plan.date = ++date;
+	int success = write(plan);
+	if (success == 1) {
+		return 0;
+	}
+	else {
+		printf("An error occcured while writing to file!\n");
+		return 1;
+	}
+}
+
+void get_readings(int day) {
 
 //Get each reading and set it into struct reading
 	reading list_0 = list0(day);
@@ -111,7 +140,41 @@ int main (int argv, char *argc[]) {
 	printf("%s %d\n", list_7.book, list_7.chapter);
 	printf("%s %d\n", list_8.book, list_8.chapter);
 	printf("%s %d\n", list_9.book, list_9.chapter);
-	return 0;
+}
+
+plan read() {
+	FILE * fp;
+	plan plan;	
+
+	fp = fopen("hbrs.data", "r");
+	if (fp == NULL) {
+		printf("Initializing new reading plan!\n");
+		plan.day = 1;
+		plan.date = 0;
+		write(plan);
+	}
+	else {
+		while (!feof(fp)) {
+			fscanf(fp, "%d %d", &plan.day, &plan.date);
+		}
+	}
+	fclose(fp);
+	return plan;
+}
+
+int write(plan plan) {
+	FILE * fp;
+
+	fp = fopen("hbrs.data", "w");
+	
+	if (fp == NULL) {
+		//write data
+	}
+	else {
+		fprintf(fp, "%d %d", plan.day, plan.date);
+	}
+	fclose(fp);
+	return 1;
 }
 
 reading list0 (int day) {
