@@ -1,3 +1,11 @@
+/*Horner Bible Reading System v0.2.0
+Copyright (C) 2018 Ian S. Pringle
+
+License GNU GPLv3+: GNU GPL Version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software. You are free to change and redistribute it.
+There is NO warranty.
+*/
+
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
@@ -69,6 +77,7 @@
 #define JUDE 1
 #define REVELATION 22
 
+//Declare structs
 typedef struct reading{
 	char * book;
 	int chapter;
@@ -79,6 +88,7 @@ typedef struct plan {
 	int date;
 } plan;
 
+//Declare functions
 void get_readings(int day);
 
 plan read();
@@ -97,13 +107,16 @@ reading list9 (int day);
 
 int main (int argv, char *argc[]) {
 
+//Read hbrs.data and save to struct plan
 	plan plan = read();
 	int day = plan.day;
 	int date = plan.date;
 	
+//Get readings
 	printf("Readings for day %d\n", day);
 	get_readings(day);
 
+//Increase day by 1 and write back to hbrs.data
 	plan.day = ++day;
 	plan.date = ++date;
 	int success = write(plan);
