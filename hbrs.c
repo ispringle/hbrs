@@ -87,64 +87,555 @@ reading list9 (int day);
 
 int main (int argv, char *argc[]) {
 
-	int day = 34;
+	int day = 54;
 
+//Get each reading and set it into struct reading
 	reading list_0 = list0(day);
-	char * book = list_0.book;
-	int chapter = list_0.chapter;
-	
-	printf("%s %d\n", book, chapter);
+	reading list_1 = list1(day);
+	reading list_2 = list2(day);
+	reading list_3 = list3(day);
+	reading list_4 = list4(day);
+	reading list_5 = list5(day);
+	reading list_6 = list6(day);
+	reading list_7 = list7(day);
+	reading list_8 = list8(day);
+	reading list_9 = list9(day);
+//Print each reading out.
+	printf("%s %d\n", list_0.book, list_0.chapter);
+	printf("%s %d\n", list_1.book, list_1.chapter);
+	printf("%s %d\n", list_2.book, list_2.chapter);
+	printf("%s %d\n", list_3.book, list_3.chapter);
+	printf("%s %d\n", list_4.book, list_4.chapter);
+	printf("%s %d\n", list_5.book, list_5.chapter);
+	printf("%s %d\n", list_6.book, list_6.chapter);
+	printf("%s %d\n", list_7.book, list_7.chapter);
+	printf("%s %d\n", list_8.book, list_8.chapter);
+	printf("%s %d\n", list_9.book, list_9.chapter);
 	return 0;
 }
 
 reading list0 (int day) {
 	reading list;
-	while (day > (MATTHEW + MARK + LUKE + JOHN)) {
+	while (day >= (MATTHEW + MARK + LUKE + JOHN)) {
 		day -= (MATTHEW + MARK + LUKE +JOHN);
 	}
 	if (day <= MATTHEW) {
-		list.chapter = day; 
+		list.chapter = day;
 		list.book = "Mattew";
+		return list;
 	}
-	else if (MATTHEW < day && day >= MARK) {
-		list.chapter = day - MATTHEW;
+	day -= MATTHEW;
+	if (day <= MARK) {
+		list.chapter = day;
 		list.book = "Mark";
+		return list;
 	}
-	else if (MARK < day && day >= LUKE) {
-		list.chapter = day - (MATTHEW + MARK);
+	day -= MARK;
+	if (day <= LUKE) {
+		list.chapter = day;
 		list.book = "Luke";
+		return list;
 	}
-	else if (LUKE < day && day >= JOHN) {
-		list.chapter = day - (MATTHEW + MARK + LUKE);
+	day -= LUKE;
+	if (day <= JOHN) {
+		list.chapter = day;
 		list.book  = "John";
+		return list;
 	}
 	else {
 		list.book = "error!";
+		return list;
 	}
-	return list;
+}
+
+reading list1 (int day) {
+	reading list;
+	while (day >= (GENESIS + EXODUS + LEVITICUS + NUMBERS + DEUTERONOMY)) {
+		day -= (GENESIS + EXODUS + LEVITICUS + NUMBERS + DEUTERONOMY);
+	}
+	if (day <= GENESIS) {
+		list.chapter = day;
+		list.book = "Genesis";
+		return list;
+	}
+	day -= GENESIS;
+	if (day <= EXODUS) {
+		list.chapter = day;
+		list.book = "Exodus";
+		return list;
+	}
+	day -= EXODUS;
+	if (day <= LEVITICUS) {
+		list.chapter = day;
+		list.book = "Leviticus";
+		return list;
+	}
+	day -= LEVITICUS;
+	if (day <= NUMBERS) {
+		list.chapter = day;
+		list.book = "Numbers";
+		return list;
+	}
+	day -= NUMBERS;
+	if (day <= DEUTERONOMY) {
+		list.chapter = day;
+		list.book = "Deuteronomy";
+		return list;
+	}
+	else{
+		list.book = "error!";
+		return list;
+	}
+}
+
+reading list2 (int day) {
+	reading list;
+	while (day >= (ROMANS + OCORINTHIANS + TCORINTHIANS + GALATIANS + EPHESIANS + PHILIPPIANS + COLOSSIANS + HEBREWS)) {
+		day -= (ROMANS + OCORINTHIANS + TCORINTHIANS + GALATIANS + EPHESIANS + PHILIPPIANS + COLOSSIANS + HEBREWS);
+	}
+	if (day <= ROMANS) {
+		list.chapter = day;
+		list.book = "Romans";
+		return list;
+	}
+	day -= ROMANS;
+	if (day <= OCORINTHIANS) {
+		list.chapter = day;
+		list.book = "1st Corinthians";
+		return list;	
+	}
+	day -= OCORINTHIANS;
+	if (day <= TCORINTHIANS) {
+		list.chapter = day;
+		list.book = "2nd Corinthains";
+		return list;	
+	}
+	day -= TCORINTHIANS;
+	if (day <= GALATIANS) {
+		list.chapter = day;
+		list.book = "Galatians";
+		return list;	
+	}
+	day -= GALATIANS;
+	if (day <= EPHESIANS) {
+		list.chapter = day;
+		list.book = "Ephesians";
+		return list;	
+	}
+	day -= EPHESIANS;
+	if (day <= PHILIPPIANS) {
+		list.chapter = day;
+		list.book = "Philippians";
+		return list;	
+	}
+	day -= PHILIPPIANS;
+	if (day <= COLOSSIANS) {
+		list.chapter = day;
+		list.book = "Colosians";
+		return list;	
+	}
+	day -= COLOSSIANS;
+	if (day <= HEBREWS) {
+		list.chapter = day;
+		list.book = "Hebrews";
+		return list;	
+	}
+	else {
+		list.book = "error!";
+		return list;	
+	}
+}
+
+reading list3 (int day) {
+	reading list;
+	while (day >= (OTHESSALONIANS + TTHESSALONIANS + OTIMOTHY + TTIMOTHY + TITUS + PHILEMON +
+				JAMES + OPETER + TPETER + OJOHN + TJOHN + HJOHN + JUDE + REVELATION)) {
+		day -= (OTHESSALONIANS + TTHESSALONIANS + OTIMOTHY + TTIMOTHY + TITUS + PHILEMON +
+				JAMES + OPETER + TPETER + OJOHN + TJOHN + HJOHN + JUDE + REVELATION);
+	}
+	if (day <= OTHESSALONIANS) {
+		list.chapter = day;
+		list.book = "1st Thessalonians";
+		return list;	
+	}
+	day -= OTHESSALONIANS;
+	if (day <= TTHESSALONIANS) {
+		list.chapter = day;
+		list.book = "2nd Thessalonians";
+		return list;	
+	}
+	day -= TTHESSALONIANS;
+	if (day <= OTIMOTHY) {
+		list.chapter = day;
+		list.book = "1st Timothy";
+		return list;	
+	}
+	day -= OTIMOTHY;
+	if (day <= TTIMOTHY) {
+		list.chapter = day;
+		list.book = "2nd Timothy";
+		return list;	
+	}
+	day -= TTIMOTHY;
+	if (day <= TITUS) {
+		list.chapter = day;
+		list.book = "Titus";
+		return list;	
+	}
+	day -= TITUS;
+	if (day <= PHILEMON) {
+		list.chapter = day;
+		list.book = "Philemon";
+		return list;	
+	}
+	day -= PHILEMON;
+	if (day <= JAMES) {
+		list.chapter = day;
+		list.book = "James";
+		return list;	
+	}
+	day -= JAMES;
+	if (day <= OPETER) {
+		list.chapter = day;
+		list.book = "1st Peter";
+		return list;	
+	}
+	day -= OPETER;
+	if (day <= TPETER) {
+		list.chapter = day;
+		list.book = "2nd Peter";
+		return list;	
+	}
+	day -= TPETER;
+	if (day <= OJOHN) {
+		list.chapter = day;
+		list.book = "1st John";
+		return list;	
+	}
+	day -= OJOHN;
+	if (day <= TJOHN) {
+		list.chapter = day;
+
+		list.book = "2nd John";
+		return list;	
+	}
+	day -= TJOHN;
+	if (day <= HJOHN) {
+		list.chapter = day;
+		list.book = "3rd John";
+		return list;	
+	}
+	day -= HJOHN;
+	if (day <= JUDE) {
+		list.chapter = day;
+		list.book = "Jude";
+		return list;	
+	}
+	if (day <= REVELATION) {
+		list.chapter = day;
+		list.book = "Revelation";
+		return list;	
+	}
+	else {
+		list.book = "error!";
+		return list;	
+	}
+}
+
+reading  list4 (int day) {
+	reading list;
+	while (day >= (JOB + ECCLESIASTES + SONGOFSONGS)) {
+		day -= (JOB + ECCLESIASTES + SONGOFSONGS);
+	}
+	if (day <= JOB ) {
+		list.chapter = day;
+		list.book = "Job";
+		return list;
+	}
+	day -= JOB;
+	if (day <=  ECCLESIASTES) {
+		list.chapter = day;
+		list.book = "Ecclesiastes";
+		return list;
+	}
+	day -= ECCLESIASTES;
+	if (day <= SONGOFSONGS) {
+		list.chapter = day;
+		list.book = "Song of Songs";
+		return list;
+	}
+	else {
+		list.book = "error!";
+		return list;
+	}
+}
+
+reading  list5 (int day) {
+	reading list;
+	while (day >= (PSALMS)) {
+		day -= (PSALMS);
+	}
+	if (day <=  PSALMS) {
+		list.chapter = day;
+		list.book = "Psalms";
+		return list;
+	}
+	else {
+		list.book = "error!";
+		return list;
+	}
+}
+
+reading  list6 (int day) {
+	reading list;
+	while (day >= (PROVERBS)) {
+		day -= (PROVERBS);
+	}
+	if (day <=  PROVERBS) {
+		list.chapter = day;
+		list.book = "Proverbs";
+		return list;
+	}
+	else {
+		list.book = "error!";
+		return list;
+	}
+}
+
+reading  list7 (int day) {
+	reading list;
+	while (day >= (JOSHUA + JUDGES + RUTH + OSAMUEL + TSAMUEL + OKINGS + TKINGS + 
+				OCHRONICLES + TCHRONICLES + EZRA + NEHEMIAH + ESTHER)) {
+		day -= (JOSHUA + JUDGES + RUTH + OSAMUEL + TSAMUEL + OKINGS + TKINGS + 
+				OCHRONICLES + TCHRONICLES + EZRA + NEHEMIAH + ESTHER) ;
+	}
+	if (day <= JOSHUA) {
+		list.chapter = day;
+		list.book = "Joshua";
+		return list;
+	}
+	day -= JOSHUA;
+	if (day <= RUTH) {
+		list.chapter = day;
+		list.book = "Ruth";
+		return list;
+	}
+	day -= RUTH;
+	if (day <= OSAMUEL) {
+		list.chapter = day;
+		list.book = "1st Samuel";
+		return list;
+	}
+	day -= OSAMUEL;
+	if (day <= TSAMUEL) {
+		list.chapter = day;
+		list.book = "2nd Samuel";
+		return list;
+	}
+	day -= TSAMUEL;
+	if (day <= OKINGS) {
+		list.chapter = day;
+		list.book = "1st Kings";
+		return list;
+	}
+	day -= OKINGS;
+	if (day <= TKINGS) {
+		list.chapter = day;
+		list.book = "2nd Kings";
+		return list;
+	}
+	day -= TKINGS;
+	if (day <= OCHRONICLES) {
+		list.chapter = day;
+		list.book = "1st Chronicles";
+		return list;
+	}
+	day -= OCHRONICLES;
+	if (day <= TCHRONICLES) {
+		list.chapter = day;
+		list.book = "2nd Chronicles";
+		return list;
+	}
+	day -= TCHRONICLES;
+	if (day <= EZRA) {
+		list.chapter = day;
+		list.book = "Ezra";
+		return list;
+	}
+	day -= EZRA;
+	if (day <= NEHEMIAH) {
+		list.chapter = day;
+		list.book = "Nehemiah";
+		return list;
+	}
+	day -= NEHEMIAH;
+	if (day <= ESTHER) {
+		list.chapter = day;
+		list.book = "Esther";
+		return list;
+	}
+	else {
+		list.book = "error!";
+		return list;
+	}
+}
+
+reading  list8 (int day) {
+	reading list;
+	while (day >= (ISAIAH + JEREMIAH + LAMENTATIONS + EZEKIEL + DANIEL + HOSEA + JOEL + AMOS + 
+			OBADIAH + JONAH + MICAH + NAHUM + HABAKKUK + ZEPHANIAH + HAGGAI + ZECHARIAH + MALACHI)) {
+		day -= (ISAIAH + JEREMIAH + LAMENTATIONS + EZEKIEL + DANIEL + HOSEA + JOEL + AMOS + 
+			OBADIAH + JONAH + MICAH + NAHUM + HABAKKUK + ZEPHANIAH + HAGGAI + ZECHARIAH + MALACHI);
+	}
+	if (day <= ISAIAH) {
+		list.chapter = day;
+		list.book = "Isaiah";
+		return list;
+	}
+	day -= ISAIAH;
+	if (day <= JEREMIAH) {
+		list.chapter = day;
+		list.book = "Jeremiah";
+		return list;
+	}
+	day -= JEREMIAH;
+	if (day <= LAMENTATIONS) {
+		list.chapter = day;
+		list.book = "Lamentations";
+		return list;
+	}
+	day -= LAMENTATIONS;
+	if (day <= EZEKIEL) {
+		list.chapter = day;
+		list.book = "Ezekiel";
+		return list;
+	}
+	day -= EZEKIEL;
+	if (day <= DANIEL) {
+		list.chapter = day;
+		list.book = "Daniel";
+		return list;
+	}
+	day -= DANIEL;
+	if (day <= HOSEA) {
+		list.chapter = day;
+		list.book = "Hosea";
+		return list;
+	}
+	day -= HOSEA;
+	if (day <= JOEL) {
+		list.chapter = day;
+		list.book = "Joel";
+		return list;
+	}
+	day -= JOEL;
+	if (day <= AMOS) {
+		list.chapter = day;
+		list.book = "Amos";
+		return list;
+	}
+	day -= AMOS;
+	if (day <= OBADIAH) {
+		list.chapter = day;
+		list.book = "Obadiah";
+		return list;
+	}
+	day -= OBADIAH;
+	if (day <= JONAH) {
+		list.chapter = day;
+		list.book = "Jonah";
+		return list;
+	}
+	day -= JONAH;
+	if (day <= MICAH) {
+		list.chapter = day;
+		list.book = "Micah";
+		return list;
+	}
+	day -= MICAH;
+	if (day <= NAHUM) {
+		list.chapter = day;
+		list.book = "Nahum";
+		return list;
+	}
+	day -= NAHUM;
+	if (day <= HABAKKUK) {
+		list.chapter = day;
+		list.book = "Habakkuk";
+		return list;
+	}
+	day -= HABAKKUK;
+	if (day <= ZEPHANIAH) {
+		list.chapter = day;
+		list.book = "Zephanian";
+		return list;
+	}
+	day -= ZEPHANIAH;
+	if (day <= HAGGAI) {
+		list.chapter = day;
+		list.book = "Haggai";
+		return list;
+	}
+	day -= HAGGAI;
+	if (day <= ZECHARIAH) {
+		list.chapter = day;
+		list.book = "Zechariah";
+		return list;
+	}
+	day -= ZECHARIAH;
+	if (day <= MALACHI) {
+		list.chapter = day;
+		list.book = "Malachi";
+		return list;
+	}
+	else {
+		list.book = "error!";
+		return list;
+	}
+}
+
+reading  list9 (int day) {
+	reading list;
+	while (day >= (ACTS)) {
+		day -= (ACTS);
+	}
+	if (day <= ACTS) {
+		list.chapter = day;
+		list.book = "Acts";
+		return list;
+	}
+	else {
+		list.book = "error!";
+		return list;
+	}
 }
 
 /* Example Func
  * reading list# (int day) {
  * 	reading list;
- * 	while (day > (SUM_OF_ALL_BOOKS_IN_LIST)) {
+ * 	while (day >= (SUM_OF_ALL_BOOKS_IN_LIST)) {
  * 		day -= (SUM_OF_AL_BOOKS_IN_LIST);
  * 	}
  * 	if (day <= BOOK_1) {
  * 		list.chapter = day;
- * 		list.book = "Book_1";
+ * 		list.book = "Book_1"; 
+ *		return list;
  * 	}
- * 	else if (BOOK_1 < day && day >= BOOK_2) {
- * 		list.chapter = day - BOOK_ONE;
+ *	day -= BOOK_1;
+ * 	if (day <= BOOK_2) {
+ * 		list.chapter = day;
  * 		list.book = "Book_2";
+ *		return list;
  * 	}
- * 	else if (BOOK_2 < day && day >= BOOK_3) {
- * 		list.chapter = day - (BOOK_1 + BOOK_2);
+ *	day -= BOOK_2;
+ * 	if (day <= BOOK_3) {
+ * 		list.chapter = day;
  * 		list.book = "Book_3";
+ *		return list;
  * 	}
  * 	else {
  * 		list.book = "error!";
+ *		return list;
  * 	}
- * 	return list;
  * }
  */
