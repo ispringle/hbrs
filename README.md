@@ -1,4 +1,4 @@
-# hbrs
+# hbrs v0.2.0
 
 hbrs is a tracker for ["Prof. Grant Horner's Bible Reading System"](https://www.scribd.com/doc/12349985/Professor-Grant-Horners-Bible-Reading-System). The program will keep track of daily Bible readings. This reading plan is not as straightforward as other reading programs as it involves reading ten chapters from various areas of the Bible each day. Each of these ten chapters is part of a list of books. Once the list has been completed the reader starts back at the top of that list. Thus, this plan never ends and the further into the reading plan you get the harder it is to determine where you are. The plan uses bookmarks to manage the daily reading, which is fine if you a) use a physical book or b) enjoy ten separate bookmarks in your Bible. This program is an alternative to this. One or two other alternatives exist, but neither truly embrace the spirit of this program as they are all based upon reading plan platforms which use definite end dates. This plan could theoretically go on for ever, and this program will theoretically enable the reader to do just that.
 
