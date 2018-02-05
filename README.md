@@ -25,9 +25,9 @@ Each list, again ten in all, will be a seperate func. which will return the book
 
 ## To Do:
 
-[ ] - Add time functionality
-
 [ ] - Add read/write
+
+[ ] - Add time functionality
 
 [ ] - Add getopt parsing
 
