@@ -9,6 +9,7 @@ There is NO warranty.
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define GENESIS 50
 #define EXODUS 40
@@ -83,17 +84,19 @@ typedef struct reading{
 	int chapter;
 } reading;
 
-typedef struct plan {
+typedef struct r_plan {
 	int day;
-	int date;
-} plan;
+	char * date;
+} r_plan;
 
 //Declare functions
 void get_readings(int day);
 
-plan read();
-int write(plan plan);
-
+void read(void);
+//plan read();
+int write(void);
+char * curtime(void);
+int comp_time(void);
 reading list0 (int day);
 reading list1 (int day);
 reading list2 (int day);
@@ -105,28 +108,41 @@ reading list7 (int day);
 reading list8 (int day);
 reading list9 (int day);
 
+static r_plan * plan;
+
 int main (int argv, char *argc[]) {
 
 //Read hbrs.data and save to struct plan
-	plan plan = read();
-	int day = plan.day;
-	int date = plan.date;
-	
+	plan = malloc(sizeof(r_plan));
+	int n = sizeof("01/01/70") + 1;
+	plan->date = malloc(sizeof(n));
+	read();
+	int day = plan->day;
+
+//Determines if date has changed since last time it was saved to hbrs. If it has, increases day and date
+	int new_day = comp_time();
+	if (new_day == 0) {
+		plan->day = ++day;
+		plan->date = curtime();
+	}
+
 //Get readings
-	printf("Readings for day %d\n", day);
+	printf("Readings for %s, day number %d:\n", plan->date, day);
 	get_readings(day);
 
 //Increase day by 1 and write back to hbrs.data
-	plan.day = ++day;
-	plan.date = ++date;
-	int success = write(plan);
+	//plan->day = ++day;
+	int success = write();
 	if (success == 1) {
+		free(plan);
 		return 0;
 	}
 	else {
 		printf("An error occcured while writing to file!\n");
+		free(plan);
 		return 1;
 	}
+	
 }
 
 void get_readings(int day) {
@@ -143,51 +159,75 @@ void get_readings(int day) {
 	reading list_8 = list8(day);
 	reading list_9 = list9(day);
 //Print each reading out.
-	printf("%s %d\n", list_0.book, list_0.chapter);
-	printf("%s %d\n", list_1.book, list_1.chapter);
-	printf("%s %d\n", list_2.book, list_2.chapter);
-	printf("%s %d\n", list_3.book, list_3.chapter);
-	printf("%s %d\n", list_4.book, list_4.chapter);
-	printf("%s %d\n", list_5.book, list_5.chapter);
-	printf("%s %d\n", list_6.book, list_6.chapter);
-	printf("%s %d\n", list_7.book, list_7.chapter);
-	printf("%s %d\n", list_8.book, list_8.chapter);
+	printf("%s %d, ", list_0.book, list_0.chapter);
+	printf("%s %d, ", list_1.book, list_1.chapter);
+	printf("%s %d, ", list_2.book, list_2.chapter);
+	printf("%s %d, ", list_3.book, list_3.chapter);
+	printf("%s %d, ", list_4.book, list_4.chapter);
+	printf("%s %d, ", list_5.book, list_5.chapter);
+	printf("%s %d, ", list_6.book, list_6.chapter);
+	printf("%s %d, ", list_7.book, list_7.chapter);
+	printf("%s %d, ", list_8.book, list_8.chapter);
 	printf("%s %d\n", list_9.book, list_9.chapter);
 }
 
-plan read() {
-	FILE * fp;
-	plan plan;	
+void read(void) {
+
+	FILE * fp;	
 
 	fp = fopen("hbrs.data", "r");
 	if (fp == NULL) {
 		printf("Initializing new reading plan!\n");
-		plan.day = 1;
-		plan.date = 0;
-		write(plan);
+		plan->day = 1;
+		plan->date = curtime();
+		write();
+		return;
 	}
 	else {
-		while (!feof(fp)) {
-			fscanf(fp, "%d %d", &plan.day, &plan.date);
-		}
+		fscanf(fp, "%d %s", &plan->day, plan->date);
 	}
+	
 	fclose(fp);
-	return plan;
+	return;
 }
 
-int write(plan plan) {
+int write(void) {
 	FILE * fp;
 
 	fp = fopen("hbrs.data", "w");
-	
+
 	if (fp == NULL) {
-		//write data
+		fprintf(fp, "%d %s\n", plan->day, plan->date);
 	}
 	else {
-		fprintf(fp, "%d %d", plan.day, plan.date);
+		fprintf(fp, "%d %s\n", plan->day, plan->date);
 	}
 	fclose(fp);
 	return 1;
+}
+
+char * curtime(void) {
+	time_t rawtime;
+	struct tm *info;
+	static char buffer[80];
+	
+	time (&rawtime );
+	
+	info = localtime ( &rawtime );
+
+	strftime(buffer, 80, "%x", info);
+	return buffer;
+}
+
+int  comp_time(void) {
+	char * today = curtime();
+	printf("%s\n", today);
+	if (strcmp(today, plan->date) == 0) {
+		return 1; 
+	}
+	else {
+		return 0;
+	}
 }
 
 reading list0 (int day) {
