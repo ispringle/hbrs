@@ -26,21 +26,3 @@ Create a file named `hbrs.data` in the same folder as `hbrs`. hbrs.data should b
 The following is a goal:
 
 Each list, again ten in all, will be a seperate func. which will return the book of the day. A file will be read, this way `day` an be stored from day to day. hbrs `-s` or `--setup` will need to be run initially, and this will create the initial data file. If a number is passed along with `-s` it will initialize the reading plan to that value and set the date to today. `hbrs.data` will store two values, `day` and `date`. On each run the program will first read `date`and determine if it matches today. If it does it will read `day`. If the date has changed it will read`day + 1`, thus advancing the reading plan, while allowing for multiple queries in a single day. If `-y` or `--yesterday` is passed it will return the reading plan for `day - 1` and if `-t` or `--tomorrow` is passed it will return the reading plan for `day + 1`. If `-d #` or `--day #` is passed it will not read the data file at all, but instead will set `day` to the # passed in the argument and returning the appropriate reading for that day. Lastly, if `-C` or `--clear` is passed it will initialize `day` in the data file to 1, thus reseting the counter.
-
-## To Do:
-
-[X] - Print readings for the nth day
-
-[X] - Add read/write
-
-[ ] - Add time functionality
-
-[ ] - Add getopt parsing
-
-[ ] - Add functions for `-y`, `-t`, `-d #`
-
-[ ] - `make`
-
-[ ] - crons job or deamon for daily autoupdate
-
-[ ] - `sendmail` functionality
