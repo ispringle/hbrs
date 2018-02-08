@@ -1,16 +1,18 @@
-/*Horner Bible Reading System v0.2.0
+/********************************
+*Horner Bible Reading System v0.2.0
 Copyright (C) 2018 Ian S. Pringle
 
 License GNU GPLv3+: GNU GPL Version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software. You are free to change and redistribute it.
 There is NO warranty.
-*/
+********************************/
 
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
 #include <string.h>
 
+//Define Books by their chapter length
 #define GENESIS 50
 #define EXODUS 40
 #define LEVITICUS 27
@@ -93,7 +95,6 @@ typedef struct r_plan {
 void get_readings(int day);
 
 void read(void);
-//plan read();
 int write(void);
 char * curtime(void);
 int comp_time(void);
@@ -142,7 +143,7 @@ int main (int argv, char *argc[]) {
 		free(plan);
 		return 1;
 	}
-	
+
 }
 
 void get_readings(int day) {
@@ -173,7 +174,7 @@ void get_readings(int day) {
 
 void read(void) {
 
-	FILE * fp;	
+	FILE * fp;
 
 	fp = fopen("hbrs.data", "r");
 	if (fp == NULL) {
@@ -186,7 +187,7 @@ void read(void) {
 	else {
 		fscanf(fp, "%d %s", &plan->day, plan->date);
 	}
-	
+
 	fclose(fp);
 	return;
 }
@@ -210,9 +211,9 @@ char * curtime(void) {
 	time_t rawtime;
 	struct tm *info;
 	static char buffer[80];
-	
+
 	time (&rawtime );
-	
+
 	info = localtime ( &rawtime );
 
 	strftime(buffer, 80, "%x", info);
@@ -223,7 +224,7 @@ int  comp_time(void) {
 	char * today = curtime();
 	printf("%s\n", today);
 	if (strcmp(today, plan->date) == 0) {
-		return 1; 
+		return 1;
 	}
 	else {
 		return 0;
@@ -232,7 +233,7 @@ int  comp_time(void) {
 
 reading list0 (int day) {
 	reading list;
-	while (day >= (MATTHEW + MARK + LUKE + JOHN)) {
+	while (day > (MATTHEW + MARK + LUKE + JOHN)) {
 		day -= (MATTHEW + MARK + LUKE +JOHN);
 	}
 	if (day <= MATTHEW) {
@@ -266,7 +267,7 @@ reading list0 (int day) {
 
 reading list1 (int day) {
 	reading list;
-	while (day >= (GENESIS + EXODUS + LEVITICUS + NUMBERS + DEUTERONOMY)) {
+	while (day > (GENESIS + EXODUS + LEVITICUS + NUMBERS + DEUTERONOMY)) {
 		day -= (GENESIS + EXODUS + LEVITICUS + NUMBERS + DEUTERONOMY);
 	}
 	if (day <= GENESIS) {
@@ -306,7 +307,7 @@ reading list1 (int day) {
 
 reading list2 (int day) {
 	reading list;
-	while (day >= (ROMANS + OCORINTHIANS + TCORINTHIANS + GALATIANS + EPHESIANS + PHILIPPIANS + COLOSSIANS + HEBREWS)) {
+	while (day > (ROMANS + OCORINTHIANS + TCORINTHIANS + GALATIANS + EPHESIANS + PHILIPPIANS + COLOSSIANS + HEBREWS)) {
 		day -= (ROMANS + OCORINTHIANS + TCORINTHIANS + GALATIANS + EPHESIANS + PHILIPPIANS + COLOSSIANS + HEBREWS);
 	}
 	if (day <= ROMANS) {
@@ -318,53 +319,53 @@ reading list2 (int day) {
 	if (day <= OCORINTHIANS) {
 		list.chapter = day;
 		list.book = "1st Corinthians";
-		return list;	
+		return list;
 	}
 	day -= OCORINTHIANS;
 	if (day <= TCORINTHIANS) {
 		list.chapter = day;
 		list.book = "2nd Corinthains";
-		return list;	
+		return list;
 	}
 	day -= TCORINTHIANS;
 	if (day <= GALATIANS) {
 		list.chapter = day;
 		list.book = "Galatians";
-		return list;	
+		return list;
 	}
 	day -= GALATIANS;
 	if (day <= EPHESIANS) {
 		list.chapter = day;
 		list.book = "Ephesians";
-		return list;	
+		return list;
 	}
 	day -= EPHESIANS;
 	if (day <= PHILIPPIANS) {
 		list.chapter = day;
 		list.book = "Philippians";
-		return list;	
+		return list;
 	}
 	day -= PHILIPPIANS;
 	if (day <= COLOSSIANS) {
 		list.chapter = day;
 		list.book = "Colosians";
-		return list;	
+		return list;
 	}
 	day -= COLOSSIANS;
 	if (day <= HEBREWS) {
 		list.chapter = day;
 		list.book = "Hebrews";
-		return list;	
+		return list;
 	}
 	else {
 		list.book = "error!";
-		return list;	
+		return list;
 	}
 }
 
 reading list3 (int day) {
 	reading list;
-	while (day >= (OTHESSALONIANS + TTHESSALONIANS + OTIMOTHY + TTIMOTHY + TITUS + PHILEMON +
+	while (day > (OTHESSALONIANS + TTHESSALONIANS + OTIMOTHY + TTIMOTHY + TITUS + PHILEMON +
 				JAMES + OPETER + TPETER + OJOHN + TJOHN + HJOHN + JUDE + REVELATION)) {
 		day -= (OTHESSALONIANS + TTHESSALONIANS + OTIMOTHY + TTIMOTHY + TITUS + PHILEMON +
 				JAMES + OPETER + TPETER + OJOHN + TJOHN + HJOHN + JUDE + REVELATION);
@@ -372,95 +373,95 @@ reading list3 (int day) {
 	if (day <= OTHESSALONIANS) {
 		list.chapter = day;
 		list.book = "1st Thessalonians";
-		return list;	
+		return list;
 	}
 	day -= OTHESSALONIANS;
 	if (day <= TTHESSALONIANS) {
 		list.chapter = day;
 		list.book = "2nd Thessalonians";
-		return list;	
+		return list;
 	}
 	day -= TTHESSALONIANS;
 	if (day <= OTIMOTHY) {
 		list.chapter = day;
 		list.book = "1st Timothy";
-		return list;	
+		return list;
 	}
 	day -= OTIMOTHY;
 	if (day <= TTIMOTHY) {
 		list.chapter = day;
 		list.book = "2nd Timothy";
-		return list;	
+		return list;
 	}
 	day -= TTIMOTHY;
 	if (day <= TITUS) {
 		list.chapter = day;
 		list.book = "Titus";
-		return list;	
+		return list;
 	}
 	day -= TITUS;
 	if (day <= PHILEMON) {
 		list.chapter = day;
 		list.book = "Philemon";
-		return list;	
+		return list;
 	}
 	day -= PHILEMON;
 	if (day <= JAMES) {
 		list.chapter = day;
 		list.book = "James";
-		return list;	
+		return list;
 	}
 	day -= JAMES;
 	if (day <= OPETER) {
 		list.chapter = day;
 		list.book = "1st Peter";
-		return list;	
+		return list;
 	}
 	day -= OPETER;
 	if (day <= TPETER) {
 		list.chapter = day;
 		list.book = "2nd Peter";
-		return list;	
+		return list;
 	}
 	day -= TPETER;
 	if (day <= OJOHN) {
 		list.chapter = day;
 		list.book = "1st John";
-		return list;	
+		return list;
 	}
 	day -= OJOHN;
 	if (day <= TJOHN) {
 		list.chapter = day;
 
 		list.book = "2nd John";
-		return list;	
+		return list;
 	}
 	day -= TJOHN;
 	if (day <= HJOHN) {
 		list.chapter = day;
 		list.book = "3rd John";
-		return list;	
+		return list;
 	}
 	day -= HJOHN;
 	if (day <= JUDE) {
 		list.chapter = day;
 		list.book = "Jude";
-		return list;	
+		return list;
 	}
 	if (day <= REVELATION) {
 		list.chapter = day;
 		list.book = "Revelation";
-		return list;	
+		return list;
 	}
 	else {
 		list.book = "error!";
-		return list;	
+		return list;
 	}
 }
 
 reading  list4 (int day) {
 	reading list;
-	while (day >= (JOB + ECCLESIASTES + SONGOFSONGS)) {
+	while (day > (JOB + ECCLESIASTES + SONGOFSONGS)) {
 		day -= (JOB + ECCLESIASTES + SONGOFSONGS);
 	}
 	if (day <= JOB ) {
@@ -488,7 +489,7 @@ reading  list4 (int day) {
 
 reading  list5 (int day) {
 	reading list;
-	while (day >= (PSALMS)) {
+	while (day > (PSALMS)) {
 		day -= (PSALMS);
 	}
 	if (day <=  PSALMS) {
@@ -504,7 +505,7 @@ reading  list5 (int day) {
 
 reading  list6 (int day) {
 	reading list;
-	while (day >= (PROVERBS)) {
+	while (day > (PROVERBS)) {
 		day -= (PROVERBS);
 	}
 	if (day <=  PROVERBS) {
@@ -520,9 +521,9 @@ reading  list6 (int day) {
 
 reading  list7 (int day) {
 	reading list;
-	while (day >= (JOSHUA + JUDGES + RUTH + OSAMUEL + TSAMUEL + OKINGS + TKINGS + 
+	while (day > (JOSHUA + JUDGES + RUTH + OSAMUEL + TSAMUEL + OKINGS + TKINGS +
 				OCHRONICLES + TCHRONICLES + EZRA + NEHEMIAH + ESTHER)) {
-		day -= (JOSHUA + JUDGES + RUTH + OSAMUEL + TSAMUEL + OKINGS + TKINGS + 
+		day -= (JOSHUA + JUDGES + RUTH + OSAMUEL + TSAMUEL + OKINGS + TKINGS +
 				OCHRONICLES + TCHRONICLES + EZRA + NEHEMIAH + ESTHER) ;
 	}
 	if (day <= JOSHUA) {
@@ -598,9 +599,9 @@ reading  list7 (int day) {
 
 reading  list8 (int day) {
 	reading list;
-	while (day >= (ISAIAH + JEREMIAH + LAMENTATIONS + EZEKIEL + DANIEL + HOSEA + JOEL + AMOS + 
+	while (day > (ISAIAH + JEREMIAH + LAMENTATIONS + EZEKIEL + DANIEL + HOSEA + JOEL + AMOS +
 			OBADIAH + JONAH + MICAH + NAHUM + HABAKKUK + ZEPHANIAH + HAGGAI + ZECHARIAH + MALACHI)) {
-		day -= (ISAIAH + JEREMIAH + LAMENTATIONS + EZEKIEL + DANIEL + HOSEA + JOEL + AMOS + 
+		day -= (ISAIAH + JEREMIAH + LAMENTATIONS + EZEKIEL + DANIEL + HOSEA + JOEL + AMOS +
 			OBADIAH + JONAH + MICAH + NAHUM + HABAKKUK + ZEPHANIAH + HAGGAI + ZECHARIAH + MALACHI);
 	}
 	if (day <= ISAIAH) {
@@ -712,7 +713,7 @@ reading  list8 (int day) {
 
 reading  list9 (int day) {
 	reading list;
-	while (day >= (ACTS)) {
+	while (day > (ACTS)) {
 		day -= (ACTS);
 	}
 	if (day <= ACTS) {
@@ -729,12 +730,12 @@ reading  list9 (int day) {
 /* Example Func
  * reading list# (int day) {
  * 	reading list;
- * 	while (day >= (SUM_OF_ALL_BOOKS_IN_LIST)) {
+ * 	while (day > (SUM_OF_ALL_BOOKS_IN_LIST)) {
  * 		day -= (SUM_OF_AL_BOOKS_IN_LIST);
  * 	}
  * 	if (day <= BOOK_1) {
  * 		list.chapter = day;
- * 		list.book = "Book_1"; 
+ * 		list.book = "Book_1";
  *		return list;
  * 	}
  *	day -= BOOK_1;
