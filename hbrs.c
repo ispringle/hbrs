@@ -222,7 +222,7 @@ char * curtime(void) {
 
 int  comp_time(void) {
 	char * today = curtime();
-	printf("%s\n", today);
+	//printf("%s\n", today);
 	if (strcmp(today, plan->date) == 0) {
 		return 1;
 	}
