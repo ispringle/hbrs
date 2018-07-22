@@ -238,7 +238,7 @@ reading list0 (int day) {
 	}
 	if (day <= MATTHEW) {
 		list.chapter = day;
-		list.book = "Mattew";
+		list.book = "Matthew";
 		return list;
 	}
 	day -= MATTHEW;
