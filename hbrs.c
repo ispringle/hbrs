@@ -111,38 +111,44 @@ reading list9 (int day);
 
 static r_plan * plan;
 
-int main (int argv, char *argc[]) {
+int main (int argc, char *argv[]) {
 
-//Read hbrs.data and save to struct plan
-	plan = malloc(sizeof(r_plan));
-	int n = sizeof("01/01/70") + 1;
-	plan->date = malloc(sizeof(n));
-	read();
-	int day = plan->day;
-
-//Determines if date has changed since last time it was saved to hbrs. If it has, increases day and date
-	int new_day = comp_time();
-	if (new_day == 0) {
-		plan->day = ++day;
-		plan->date = curtime();
+// Determine if a day is provided in argv
+	int day;
+	if(argc > 1) {
+		day = atoi(argv[1]);
+	} else {
+	//Read hbrs.data and save to struct plan
+		plan = malloc(sizeof(r_plan));
+		int n = sizeof("01/01/70") + 1;
+		plan->date = malloc(sizeof(n));
+		read();
+		day = plan->day;
+	
+	//Determines if date has changed since last time it was saved to hbrs. If it has, increases day and date
+		int new_day = comp_time();
+		if (new_day == 0) {
+			plan->day = ++day;
+			plan->date = curtime();
+		}
+		
+	//Increase day by 1 and write back to hbrs.data
+	//plan->day = ++day;
+		int success = write();
+		if (success == 1) {
+			free(plan);
+			return 0;
+		}
+		else {
+			printf("An error occcured while writing to file!\n");
+			free(plan);
+			return 1;
+		}
 	}
 
 //Get readings
-	printf("Readings for %s, day number %d:\n", plan->date, day);
+// printf("Readings for %s, day number %d:\n", plan->date, day);
 	get_readings(day);
-
-//Increase day by 1 and write back to hbrs.data
-	//plan->day = ++day;
-	int success = write();
-	if (success == 1) {
-		free(plan);
-		return 0;
-	}
-	else {
-		printf("An error occcured while writing to file!\n");
-		free(plan);
-		return 1;
-	}
 
 }
 
