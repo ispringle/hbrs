@@ -30,7 +30,7 @@ There is NO warranty.
 #define EZRA 10
 #define NEHEMIAH 13
 #define ESTHER 10
-#define JOB 10
+#define JOB 42
 #define PSALMS 150
 #define PROVERBS 31
 #define ECCLESIASTES 12
@@ -160,16 +160,16 @@ void get_readings(int day) {
 	reading list_8 = list8(day);
 	reading list_9 = list9(day);
 //Print each reading out.
-	printf("%s %d, ", list_0.book, list_0.chapter);
-	printf("%s %d, ", list_1.book, list_1.chapter);
-	printf("%s %d, ", list_2.book, list_2.chapter);
-	printf("%s %d, ", list_3.book, list_3.chapter);
-	printf("%s %d, ", list_4.book, list_4.chapter);
-	printf("%s %d, ", list_5.book, list_5.chapter);
-	printf("%s %d, ", list_6.book, list_6.chapter);
-	printf("%s %d, ", list_7.book, list_7.chapter);
-	printf("%s %d, ", list_8.book, list_8.chapter);
-	printf("%s %d\n", list_9.book, list_9.chapter);
+	printf("%s.%d, ", list_0.book, list_0.chapter);
+	printf("%s.%d, ", list_1.book, list_1.chapter);
+	printf("%s.%d, ", list_2.book, list_2.chapter);
+	printf("%s.%d, ", list_3.book, list_3.chapter);
+	printf("%s.%d, ", list_4.book, list_4.chapter);
+	printf("%s.%d, ", list_5.book, list_5.chapter);
+	printf("%s.%d, ", list_6.book, list_6.chapter);
+	printf("%s.%d, ", list_7.book, list_7.chapter);
+	printf("%s.%d, ", list_8.book, list_8.chapter);
+	printf("%s.%d\n", list_9.book, list_9.chapter);
 }
 
 void read(void) {
@@ -238,7 +238,7 @@ reading list0 (int day) {
 	}
 	if (day <= MATTHEW) {
 		list.chapter = day;
-		list.book = "Matthew";
+		list.book = "Matt";
 		return list;
 	}
 	day -= MATTHEW;
@@ -272,31 +272,31 @@ reading list1 (int day) {
 	}
 	if (day <= GENESIS) {
 		list.chapter = day;
-		list.book = "Genesis";
+		list.book = "Gen";
 		return list;
 	}
 	day -= GENESIS;
 	if (day <= EXODUS) {
 		list.chapter = day;
-		list.book = "Exodus";
+		list.book = "Exod";
 		return list;
 	}
 	day -= EXODUS;
 	if (day <= LEVITICUS) {
 		list.chapter = day;
-		list.book = "Leviticus";
+		list.book = "Lev";
 		return list;
 	}
 	day -= LEVITICUS;
 	if (day <= NUMBERS) {
 		list.chapter = day;
-		list.book = "Numbers";
+		list.book = "Num";
 		return list;
 	}
 	day -= NUMBERS;
 	if (day <= DEUTERONOMY) {
 		list.chapter = day;
-		list.book = "Deuteronomy";
+		list.book = "Deut";
 		return list;
 	}
 	else{
@@ -312,49 +312,49 @@ reading list2 (int day) {
 	}
 	if (day <= ROMANS) {
 		list.chapter = day;
-		list.book = "Romans";
+		list.book = "Rom";
 		return list;
 	}
 	day -= ROMANS;
 	if (day <= OCORINTHIANS) {
 		list.chapter = day;
-		list.book = "1st Corinthians";
+		list.book = "1Cor";
 		return list;
 	}
 	day -= OCORINTHIANS;
 	if (day <= TCORINTHIANS) {
 		list.chapter = day;
-		list.book = "2nd Corinthains";
+		list.book = "2Cor";
 		return list;
 	}
 	day -= TCORINTHIANS;
 	if (day <= GALATIANS) {
 		list.chapter = day;
-		list.book = "Galatians";
+		list.book = "Gal";
 		return list;
 	}
 	day -= GALATIANS;
 	if (day <= EPHESIANS) {
 		list.chapter = day;
-		list.book = "Ephesians";
+		list.book = "Eph";
 		return list;
 	}
 	day -= EPHESIANS;
 	if (day <= PHILIPPIANS) {
 		list.chapter = day;
-		list.book = "Philippians";
+		list.book = "Phil";
 		return list;
 	}
 	day -= PHILIPPIANS;
 	if (day <= COLOSSIANS) {
 		list.chapter = day;
-		list.book = "Colosians";
+		list.book = "Col";
 		return list;
 	}
 	day -= COLOSSIANS;
 	if (day <= HEBREWS) {
 		list.chapter = day;
-		list.book = "Hebrews";
+		list.book = "Heb";
 		return list;
 	}
 	else {
@@ -372,25 +372,25 @@ reading list3 (int day) {
 	}
 	if (day <= OTHESSALONIANS) {
 		list.chapter = day;
-		list.book = "1st Thessalonians";
+		list.book = "1Thess";
 		return list;
 	}
 	day -= OTHESSALONIANS;
 	if (day <= TTHESSALONIANS) {
 		list.chapter = day;
-		list.book = "2nd Thessalonians";
+		list.book = "2Thess";
 		return list;
 	}
 	day -= TTHESSALONIANS;
 	if (day <= OTIMOTHY) {
 		list.chapter = day;
-		list.book = "1st Timothy";
+		list.book = "1Tim";
 		return list;
 	}
 	day -= OTIMOTHY;
 	if (day <= TTIMOTHY) {
 		list.chapter = day;
-		list.book = "2nd Timothy";
+		list.book = "2Tim";
 		return list;
 	}
 	day -= TTIMOTHY;
@@ -402,44 +402,44 @@ reading list3 (int day) {
 	day -= TITUS;
 	if (day <= PHILEMON) {
 		list.chapter = day;
-		list.book = "Philemon";
+		list.book = "Phlm";
 		return list;
 	}
 	day -= PHILEMON;
 	if (day <= JAMES) {
 		list.chapter = day;
-		list.book = "James";
+		list.book = "Jas";
 		return list;
 	}
 	day -= JAMES;
 	if (day <= OPETER) {
 		list.chapter = day;
-		list.book = "1st Peter";
+		list.book = "1Pet";
 		return list;
 	}
 	day -= OPETER;
 	if (day <= TPETER) {
 		list.chapter = day;
-		list.book = "2nd Peter";
+		list.book = "2Pet";
 		return list;
 	}
 	day -= TPETER;
 	if (day <= OJOHN) {
 		list.chapter = day;
-		list.book = "1st John";
+		list.book = "1John";
 		return list;
 	}
 	day -= OJOHN;
 	if (day <= TJOHN) {
 		list.chapter = day;
 
-		list.book = "2nd John";
+		list.book = "2John";
 		return list;
 	}
 	day -= TJOHN;
 	if (day <= HJOHN) {
 		list.chapter = day;
-		list.book = "3rd John";
+		list.book = "3John";
 		return list;
 	}
 	day -= HJOHN;
@@ -450,7 +450,7 @@ reading list3 (int day) {
 	}
 	if (day <= REVELATION) {
 		list.chapter = day;
-		list.book = "Revelation";
+		list.book = "Rev";
 		return list;
 	}
 	else {
@@ -472,13 +472,13 @@ reading  list4 (int day) {
 	day -= JOB;
 	if (day <=  ECCLESIASTES) {
 		list.chapter = day;
-		list.book = "Ecclesiastes";
+		list.book = "Eccl";
 		return list;
 	}
 	day -= ECCLESIASTES;
 	if (day <= SONGOFSONGS) {
 		list.chapter = day;
-		list.book = "Song of Songs";
+		list.book = "Song";
 		return list;
 	}
 	else {
@@ -494,7 +494,7 @@ reading  list5 (int day) {
 	}
 	if (day <=  PSALMS) {
 		list.chapter = day;
-		list.book = "Psalms";
+		list.book = "Ps";
 		return list;
 	}
 	else {
@@ -510,7 +510,7 @@ reading  list6 (int day) {
 	}
 	if (day <=  PROVERBS) {
 		list.chapter = day;
-		list.book = "Proverbs";
+		list.book = "Prov";
 		return list;
 	}
 	else {
@@ -528,10 +528,16 @@ reading  list7 (int day) {
 	}
 	if (day <= JOSHUA) {
 		list.chapter = day;
-		list.book = "Joshua";
+		list.book = "Josh";
 		return list;
 	}
 	day -= JOSHUA;
+	if (day <= JUDGES) {
+		list.chapter = day;
+		list.book = "Judg";
+		return list;
+	}
+	day -= JUDGES;
 	if (day <= RUTH) {
 		list.chapter = day;
 		list.book = "Ruth";
@@ -540,37 +546,37 @@ reading  list7 (int day) {
 	day -= RUTH;
 	if (day <= OSAMUEL) {
 		list.chapter = day;
-		list.book = "1st Samuel";
+		list.book = "1Sam";
 		return list;
 	}
 	day -= OSAMUEL;
 	if (day <= TSAMUEL) {
 		list.chapter = day;
-		list.book = "2nd Samuel";
+		list.book = "2Sam";
 		return list;
 	}
 	day -= TSAMUEL;
 	if (day <= OKINGS) {
 		list.chapter = day;
-		list.book = "1st Kings";
+		list.book = "1Kgs";
 		return list;
 	}
 	day -= OKINGS;
 	if (day <= TKINGS) {
 		list.chapter = day;
-		list.book = "2nd Kings";
+		list.book = "2Kgs";
 		return list;
 	}
 	day -= TKINGS;
 	if (day <= OCHRONICLES) {
 		list.chapter = day;
-		list.book = "1st Chronicles";
+		list.book = "1Chr";
 		return list;
 	}
 	day -= OCHRONICLES;
 	if (day <= TCHRONICLES) {
 		list.chapter = day;
-		list.book = "2nd Chronicles";
+		list.book = "2Chr";
 		return list;
 	}
 	day -= TCHRONICLES;
@@ -582,13 +588,13 @@ reading  list7 (int day) {
 	day -= EZRA;
 	if (day <= NEHEMIAH) {
 		list.chapter = day;
-		list.book = "Nehemiah";
+		list.book = "Neh";
 		return list;
 	}
 	day -= NEHEMIAH;
 	if (day <= ESTHER) {
 		list.chapter = day;
-		list.book = "Esther";
+		list.book = "Esth";
 		return list;
 	}
 	else {
@@ -606,37 +612,37 @@ reading  list8 (int day) {
 	}
 	if (day <= ISAIAH) {
 		list.chapter = day;
-		list.book = "Isaiah";
+		list.book = "Isa";
 		return list;
 	}
 	day -= ISAIAH;
 	if (day <= JEREMIAH) {
 		list.chapter = day;
-		list.book = "Jeremiah";
+		list.book = "Jer";
 		return list;
 	}
 	day -= JEREMIAH;
 	if (day <= LAMENTATIONS) {
 		list.chapter = day;
-		list.book = "Lamentations";
+		list.book = "Lam";
 		return list;
 	}
 	day -= LAMENTATIONS;
 	if (day <= EZEKIEL) {
 		list.chapter = day;
-		list.book = "Ezekiel";
+		list.book = "Ezek";
 		return list;
 	}
 	day -= EZEKIEL;
 	if (day <= DANIEL) {
 		list.chapter = day;
-		list.book = "Daniel";
+		list.book = "Dan";
 		return list;
 	}
 	day -= DANIEL;
 	if (day <= HOSEA) {
 		list.chapter = day;
-		list.book = "Hosea";
+		list.book = "Hos";
 		return list;
 	}
 	day -= HOSEA;
@@ -654,7 +660,7 @@ reading  list8 (int day) {
 	day -= AMOS;
 	if (day <= OBADIAH) {
 		list.chapter = day;
-		list.book = "Obadiah";
+		list.book = "Obad";
 		return list;
 	}
 	day -= OBADIAH;
@@ -666,43 +672,43 @@ reading  list8 (int day) {
 	day -= JONAH;
 	if (day <= MICAH) {
 		list.chapter = day;
-		list.book = "Micah";
+		list.book = "Mic";
 		return list;
 	}
 	day -= MICAH;
 	if (day <= NAHUM) {
 		list.chapter = day;
-		list.book = "Nahum";
+		list.book = "Nah";
 		return list;
 	}
 	day -= NAHUM;
 	if (day <= HABAKKUK) {
 		list.chapter = day;
-		list.book = "Habakkuk";
+		list.book = "Hab";
 		return list;
 	}
 	day -= HABAKKUK;
 	if (day <= ZEPHANIAH) {
 		list.chapter = day;
-		list.book = "Zephanian";
+		list.book = "Zeph";
 		return list;
 	}
 	day -= ZEPHANIAH;
 	if (day <= HAGGAI) {
 		list.chapter = day;
-		list.book = "Haggai";
+		list.book = "Hag";
 		return list;
 	}
 	day -= HAGGAI;
 	if (day <= ZECHARIAH) {
 		list.chapter = day;
-		list.book = "Zechariah";
+		list.book = "Zech";
 		return list;
 	}
 	day -= ZECHARIAH;
 	if (day <= MALACHI) {
 		list.chapter = day;
-		list.book = "Malachi";
+		list.book = "Mal";
 		return list;
 	}
 	else {
