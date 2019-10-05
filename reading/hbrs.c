@@ -454,6 +454,7 @@ reading list3 (int day) {
 		list.book = "Jude";
 		return list;
 	}
+	day -= JUDE;
 	if (day <= REVELATION) {
 		list.chapter = day;
 		list.book = "Rev";
